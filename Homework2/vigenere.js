@@ -99,13 +99,9 @@ console.log("               ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 for (let i = 0; i < repeatAmount; i++) {
     count = i;
     makePhrase(repeatAmount, i);
+    console.log(`Phrase ${i + 1}: ${phrase}`);
     findLetterFrequencies();
     ioc();
-    //1. 1-2
-    //2. 1-2
-    //3. 5-10
-    //4. 1-2
-    //5. 1-2
 }
 
 combinePhrases();

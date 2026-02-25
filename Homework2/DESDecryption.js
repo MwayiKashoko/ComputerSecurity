@@ -215,6 +215,8 @@ const step2 = (string, keys, decrypt = false) => {
 
         P.forEach(row => row.forEach(val => finalF += s[val - 1]));
 
+        console.log(finalF);
+
         rightHalves.push((BigInt(parseInt(leftHalves[i], 2)) ^ BigInt(parseInt(finalF, 2))).toString(2).padStart(32, "0"));
     }
 
@@ -237,7 +239,9 @@ const convertBinaryToAscii = (str) => {
 }
 
 const DES = (string, decrypt = false) => {
-    let text = step2(cipherText, step1(string), decrypt);
+    let keys = step1(string);
+    let text = step2(cipherText, keys, true);
+    console.log(keys);
 
     return convertBinaryToAscii(text);
 }
