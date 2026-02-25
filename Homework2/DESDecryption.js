@@ -226,10 +226,22 @@ const step2 = (string, keys, decrypt = false) => {
     return permutateReverse16;
 }
 
-const DES = (string) => {
-    return step2(cipherText, step1(string), true);
+const convertBinaryToAscii = (str) => {
+    let text = "";
+
+    for (let i = 0; i < str.length / 8; i++) {
+        text += String.fromCharCode(parseInt(str.substring(i * 8, i * 8 + 8), 2));
+    }
+
+    return text;
 }
 
-let encrypted = DES(key);
+const DES = (string, decrypt = false) => {
+    let text = step2(cipherText, step1(string), decrypt);
+
+    return convertBinaryToAscii(text);
+}
+
+let encrypted = DES(key, true);
 
 console.log(encrypted);
